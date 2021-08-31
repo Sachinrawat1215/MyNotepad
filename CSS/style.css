@@ -77,13 +77,13 @@ header .search-bar input[type="submit"] {
     margin: 15px 10px;
 }
 
-.wrapper .buttons .login {
+.wrapper .buttons .login{
     background-color: #222F3E;
     color: white;
     display: block;
     margin: 0 15px;
     width: 150px;
-    padding: 7px 15px;
+    padding: 7px 0px;
     font-family: 'Poppins', sans-serif;
     border-radius: 3px;
     font-weight: 500;
@@ -93,7 +93,6 @@ header .search-bar input[type="submit"] {
 
 .wrapper .buttons .login:hover {
     background-color: #F79F1F;
-    color: black;
     transition: 0.5s ease;
     font-weight: 600;
 }
@@ -101,6 +100,11 @@ header .search-bar input[type="submit"] {
 .wrapper .buttons .login a {
     color: white;
     text-decoration: none;
+    padding: 6px 46px;
+}
+
+.wrapper .buttons .login a:hover{
+    color: black;
 }
 
 .wrapper .custom-message p {
@@ -189,7 +193,7 @@ header .search-bar input[type="submit"] {
     font-size: 16px;
     font-weight: 500;
     padding: 9px 18px;
-    width: 410px;
+    width: 100%;
     border-radius: 23px;
     outline: none;
     margin: 5px auto;
@@ -227,4 +231,27 @@ header .search-bar input[type="submit"] {
 
 .login-container form .new-user p a{
     text-decoration: none;
+}
+
+/* Logout Btn styling */
+
+.wrapper .user-logout{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0 0 0;
+    padding: 7px 50px;
+    font-size: 25px;
+    background-color: rgb(246, 246, 246);
+    border-radius: 5px;
+}
+
+.wrapper .user-logout i{
+    margin: 5px 10px;
+    color: #F79F1F;
+}
+
+.wrapper .user-logout a{
+    text-decoration: none;
+    color: black;
+    padding: 5px 10px;
 }
