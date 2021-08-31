@@ -38,6 +38,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 8px 170px;
+    position: relative;
 }
 
 header .logo, header .search-bar {
@@ -157,6 +158,43 @@ header .search-bar input[type="submit"] {
     padding: 10px 30px;
 }
 
+.wrapper .notes-container #notes{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.wrapper .notes-container .cards {
+    padding: 25px;
+    margin: 10px;
+    background-color: white;
+    box-shadow: 0 2px 10px -3px rgba(0, 0, 0, 0.4);
+    height: 310px;
+    position: relative;
+    border-radius: 5px;
+}
+
+.wrapper .notes-container .cards .title {
+    font-size: 26px;
+    font-weight: 700;
+    font-family: 'Josefin Sans', sans-serif;
+    padding: 0 0 5px 0;
+}
+
+.wrapper .notes-container .cards .cardtxt p{
+    overflow: auto;
+}
+
+.wrapper .notes-container .cards i {
+    font-size: 29px;
+    color: #F79F1F;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 20px;
+    cursor: pointer;
+}
+
 /* Login form styling */
 
 .login-container {
@@ -254,4 +292,37 @@ header .search-bar input[type="submit"] {
     text-decoration: none;
     color: black;
     padding: 5px 10px;
+}
+
+/* Content box styling */
+
+.wrapper .content-box{
+    background-color: white;
+    display: block;
+    visibility: visible;
+    position: absolute;
+    top: 300px;
+    left: 35%;
+    width: 30%;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 20px 0px rgb(182 182 182);
+}
+
+.wrapper .content-box .title-cross{
+    display: flex;
+    justify-content: space-between;
+    font-size: 27px;
+    padding: 0 0 7px 0;
+}
+
+.wrapper .content-box .title-cross .content-title{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.wrapper .content-box .title-cross i{
+    color: #F79F1F;
+    cursor: pointer;
 }
