@@ -25,12 +25,6 @@ body {
     background-color: #DCDDE1;
 }
 
-/* 
-font-family: 'Josefin Sans', sans-serif;  for note text and user input
-font-family: 'Poppins', sans-serif;       for heading and Important elements
-font-family: 'Roboto Slab', serif;        for error and custom message 
-*/
-
 header {
     background-color: #222F3E;
     color: white;
@@ -46,6 +40,10 @@ header .logo, header .search-bar {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 28px;
     font-weight: 600;
+}
+
+header .search-bar i{
+    display: none;
 }
 
 header .search-bar #searchTxt {
@@ -161,7 +159,6 @@ header .search-bar input[type="submit"] {
 .wrapper .notes-container #notes{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
 }
 
 .wrapper .notes-container .cards {
