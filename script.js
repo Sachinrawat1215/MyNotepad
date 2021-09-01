@@ -1,3 +1,32 @@
+// SignUp Details fetch 
+let signUpObj = [];
+let loginObj = [];
+let user = {
+    first: "",
+    lastName: "",
+    gmail: "",
+    password: ""
+};
+
+const signUp = () => {
+    if (password.value == re_password.value) {
+        user.first = firstName.value;
+        user.lastName = lastName.value;
+        user.gmail = email.value;
+        user.password = password.value;
+        password_match_error.style.visibility = "visible";
+        password_match_error.innerText = "SignUp sucessfull... Login now..."
+        loginObj.push(user);
+        console.log(user);
+        console.log(loginObj);
+    } else {
+        password_match_error.style.visibility = "visible";
+        console.log(password.value);
+        console.log(re_password.value);
+    }
+};
+
+
 showNotes();
 let addBtn = document.getElementById('addBtn');
 addBtn.addEventListener("click", function (e) {
@@ -29,12 +58,11 @@ function showNotes() {
         html +=
             `<div class="cards">
                 <div class="title">Note ${index + 1}</div>
-                <div class="cardtxt">
-                    <span>${element}</span>
+                <div class="cardtxt">         
+                    <span id="main-content">${element}<span onclick="checkIndex(this.id)" id="${index}"><a href="#header">...Read More</a></span></span>
                 </div>
                 <i class="fas fa-trash-alt"  id="${index}" onclick="deleteNote(this.id)"></i>
             </div>`;
-            // <span onclick="checkIndex()">Read More</span> 
     });
     let notesElm = document.getElementById("notes");
     if (notesObj.length != 0) {
@@ -54,7 +82,7 @@ function deleteNote(index) {
     } else {
         notesObj = JSON.parse(notes);
     }
-
+    console.log(index);
     notesObj.splice(index, 1);
     localStorage.setItem("notes", JSON.stringify(notesObj));
     showNotes();
@@ -79,26 +107,37 @@ search.addEventListener('input', function () {
     });
 });
 
-// // Content box to show full content
+// Content box to show full content
 
-// function checkIndex(element, index) {
-//     let contentBox = document.getElementById("content-box");
-//     let contentHtml = "";
-//     contentHtml += `<div class="content-box" id="content-box">
-//     <div class="title-cross">
-//         <div class="content-title">Note ${index}</div>
-//         <i class="fas fa-times" id="hide"></i>
-//     </div>
-//         <div class="content-txt">${element}</div>
-//     </div>`
-//     contentBox.style.visibility = "visible";
-//     console.log(index);
+function checkIndex(index) {
+    console.log(index);
+    console.log(notesObj[index]);
+    let boxContent = document.getElementById("contentTxt");
+    let contentBox = document.getElementById("content-box");
+    let contentTitle = document.getElementById("contentTitle");
+    contentBox.style.visibility = "visible";
+    boxContent.innerHTML = notesObj[index];
+    contentTitle.innerHTML = `Note ${parseFloat(index) + 1}`;
+};
 
-//     // hide content box
-//     let hide = document.getElementById("hide");
-//     hide.addEventListener("click", () => {
-//         let contentBox = document.getElementById("content-box");
-//         contentBox.style.visibility = "hidden";
-//     })
-// }
+// hide content box
+let hide = document.getElementById("hide");
+hide.addEventListener("click", () => {
+    let contentBox = document.getElementById("content-box");
+    contentBox.style.visibility = "hidden";
+});
 
+// hide extra text and show read more button
+
+let mainTxt = document.getElementById("main-content");
+console.log(mainTxt.children);
+let str = mainTxt.innerHTML;
+let strLength = str.length;
+notesObj.forEach(function (strLength, index) {
+    console.log(strLength.length);
+    if (strLength.length > 200) {
+        console.log("this is greater than 200");
+    } else {
+        console.log("this is smaller");
+    }
+});
