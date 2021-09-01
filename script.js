@@ -9,7 +9,28 @@ let user = {
 };
 
 const signUp = () => {
-    if (password.value == re_password.value) {
+    if (user.first != "" && user.lastName != "" && user.gmail != "" && password.value === re_password.value) {
+
+        // if(user.first != ""){
+        //     user.first = firstName.value;
+        // }else{
+        //     password_match_error.style.visibility = "visible";
+        //     password_match_error.innerText = "Enter first name..."
+        // }
+
+        // if(user.lastName != ""){
+        //     user.first = lastName.value;
+        // }else{
+        //     password_match_error.style.visibility = "visible";
+        //     password_match_error.innerText = "Enter last name..."
+        // }
+
+        // if(user.gmail != ""){
+        //     user.gmail = email.value;
+        // }else{
+        //     password_match_error.style.visibility = "visible";
+        //     password_match_error.innerText = "Enter email address..."
+        // }
         user.first = firstName.value;
         user.lastName = lastName.value;
         user.gmail = email.value;
@@ -21,6 +42,7 @@ const signUp = () => {
         console.log(loginObj);
     } else {
         password_match_error.style.visibility = "visible";
+        password_match_error.innerText = "you have missed something...";
         console.log(password.value);
         console.log(re_password.value);
     }
