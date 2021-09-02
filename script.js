@@ -50,7 +50,8 @@ const signUp = () => {
 
 
 showNotes();
-let addBtn = document.getElementById('addBtn');
+let addBtn = document.getElementById("addBtn");
+let blankTxt = document.getElementById("blank_txt_error");
 addBtn.addEventListener("click", function (e) {
 
     let addTxt = document.getElementById("addTxt");
@@ -61,11 +62,16 @@ addBtn.addEventListener("click", function (e) {
         notesObj = JSON.parse(notes);
     }
 
-    notesObj.push(addTxt.value);
-    localStorage.setItem("notes", JSON.stringify(notesObj));
-    addTxt.value = "";
-    console.log(notesObj);
-    showNotes();
+    if(addTxt.value === ""){
+        blank_txt_error.style.visibility = "visible";
+    }else{
+        notesObj.push(addTxt.value);
+        localStorage.setItem("notes", JSON.stringify(notesObj));
+        addTxt.value = "";
+        console.log(notesObj);
+        showNotes();
+        blank_txt_error.style.visibility = "hidden";
+    }  
 })
 
 function showNotes() {
@@ -77,15 +83,28 @@ function showNotes() {
     }
     let html = "";
     notesObj.forEach(function (element, index) {
-        html +=
-            `<div class="cards">
-                <div class="title">Note ${index + 1}</div>
-                <div class="cardtxt">         
-                    <span id="main-content">${element}<span onclick="checkIndex(this.id)" id="${index}"><a href="#header">...Read More</a></span></span>
-                </div>
-                <i class="fas fa-trash-alt"  id="${index}" onclick="deleteNote(this.id)"></i>
+        let readMore = `<span onclick="checkIndex(this.id)" id="${index}"><a href="#header">...Read More</a></span></span>`;         
+        if(element.length > 200){
+            let subText = element.substring(0, 200);
+            element = subText;
+            html += `<div class="cards">
+            <div class="title">Note ${index + 1}</div>
+            <div class="cardtxt">         
+                <span id="main-content">${element}${readMore}
+            </div>
+            <i class="fas fa-trash-alt"  id="${index}" onclick="deleteNote(this.id)"></i>
             </div>`;
+        }else{
+           html += `<div class="cards">
+           <div class="title">Note ${index + 1}</div>
+           <div class="cardtxt">         
+               <span id="main-content">${element}
+           </div>
+           <i class="fas fa-trash-alt"  id="${index}" onclick="deleteNote(this.id)"></i>
+           </div>`;
+        }
     });
+
     let notesElm = document.getElementById("notes");
     if (notesObj.length != 0) {
         notesElm.innerHTML = html;
@@ -104,7 +123,6 @@ function deleteNote(index) {
     } else {
         notesObj = JSON.parse(notes);
     }
-    console.log(index);
     notesObj.splice(index, 1);
     localStorage.setItem("notes", JSON.stringify(notesObj));
     showNotes();
@@ -125,41 +143,28 @@ search.addEventListener('input', function () {
         else {
             element.style.display = "none";
         }
-        // console.log(cardTxt);
     });
 });
 
-// Content box to show full content
+// Content box to show full note and blur background
+
+let boxContent = document.getElementById("contentTxt");
+let contentBox = document.getElementById("content-box");
+let contentTitle = document.getElementById("contentTitle");
+let hide = document.getElementById("hide");
+let mainTxt = document.getElementById("main-content");
 
 function checkIndex(index) {
-    console.log(index);
-    console.log(notesObj[index]);
-    let boxContent = document.getElementById("contentTxt");
-    let contentBox = document.getElementById("content-box");
-    let contentTitle = document.getElementById("contentTitle");
     contentBox.style.visibility = "visible";
     boxContent.innerHTML = notesObj[index];
     contentTitle.innerHTML = `Note ${parseFloat(index) + 1}`;
+    wrapper.classList.toggle("active");
+    contentBox.classList.toggle("active");
 };
 
 // hide content box
-let hide = document.getElementById("hide");
 hide.addEventListener("click", () => {
-    let contentBox = document.getElementById("content-box");
     contentBox.style.visibility = "hidden";
-});
-
-// hide extra text and show read more button
-
-let mainTxt = document.getElementById("main-content");
-console.log(mainTxt.children);
-let str = mainTxt.innerHTML;
-let strLength = str.length;
-notesObj.forEach(function (strLength, index) {
-    console.log(strLength.length);
-    if (strLength.length > 200) {
-        console.log("this is greater than 200");
-    } else {
-        console.log("this is smaller");
-    }
+    wrapper.classList.toggle("active");
+    contentBox.classList.toggle("active");
 });

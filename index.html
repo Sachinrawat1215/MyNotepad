@@ -35,7 +35,7 @@
         </div>
     </header>
 
-    <div class="wrapper">
+    <div class="wrapper" id="wrapper">
 
         <!-- Login/ SignUp notification Section -->
         <div class="buttons">
@@ -50,6 +50,7 @@
         <div class="text-input">
             <h1>Add a New Notes</h1>
             <textarea name="note" id="addTxt" cols="30" rows="10"></textarea>
+            <p id="blank_txt_error">Type something to add...</p>
             <button id="addBtn">Add it</button>
         </div>
 
@@ -59,6 +60,21 @@
             <div id="notes">
                 <!-- All the Notes will be shown through javascript -->
             </div>
+        </div>
+
+        
+    </div>
+
+    <!-- custom box to show full note -->
+    <div class="content-box" id="content-box">
+        <div class="title-cross">
+            <div class="content-title" id="contentTitle">
+                <!-- note number will show through javascript -->
+            </div>
+            <i class="fas fa-times" id="hide"></i>
+        </div>
+        <div class="content-txt" id="contentTxt">
+            <!-- content will show through javascript -->
         </div>
     </div>
 

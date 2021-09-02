@@ -69,6 +69,13 @@ header .search-bar input[type="submit"] {
     margin: 0 auto;
 }
 
+.wrapper.active{
+    filter: blur(5px);
+    pointer-events: none;
+    user-select: none;
+    transition: 0.6s ease;
+}
+
 .wrapper .buttons {
     display: flex;
     justify-content: center;
@@ -137,10 +144,17 @@ header .search-bar input[type="submit"] {
     color: rgb(37, 37, 37);
 }
 
-.wrapper .text-input button {
+.wrapper .text-input p{
+    color: red;
+    font-size: 14px;
+    margin: 5px 45px;
+    visibility: hidden;
+}
+
+.wrapper .text-input button{
     padding: 5px 16px;
     font-size: 18px;
-    margin: 10px 45px;
+    margin: 0px 45px;
     font-weight: 500;
     background-color: #F79F1F;
     border-radius: 2px;
@@ -298,7 +312,7 @@ header .search-bar input[type="submit"] {
 
 /* Content box styling */
 
-.wrapper .content-box{
+.content-box{
     background-color: white;
     display: block;
     visibility: hidden;
@@ -309,22 +323,30 @@ header .search-bar input[type="submit"] {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0px 1px 20px 0px rgb(182 182 182);
+    opacity: 0;
 }
 
-.wrapper .content-box .title-cross{
+.content-box.active{
+    transform: translate(0%, 30%);
+    transition: 0.8s ease-in-out;
+    opacity: 1;
+    visibility: visible;
+}
+
+.content-box .title-cross{
     display: flex;
     justify-content: space-between;
     font-size: 27px;
     padding: 0 0 7px 0;
 }
 
-.wrapper .content-box .title-cross .content-title{
+.content-box .title-cross .content-title{
     font-family: 'Josefin Sans', sans-serif;
     font-size: 30px;
     font-weight: 700;
 }
 
-.wrapper .content-box .title-cross i{
+.content-box .title-cross i{
     color: #F79F1F;
     cursor: pointer;
 }
