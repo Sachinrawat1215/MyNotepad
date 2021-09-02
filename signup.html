@@ -40,21 +40,34 @@
     <div class="login-container">
         <h1>Sign Up Form</h1>
         <!-- Sign Up details Fill form -->
-        <form action="post">
+        <form method="post" onsubmit="return validateForm()">
+            <!-- First name -->
             <label for="firstName">First name</label>
-            <input type="text" id="firstName" placeholder="Enter your email address" required>
+            <input type="text" id="firstName" placeholder="Enter your first name..." required>
+            
+            <!-- Last Name -->
             <label for="lastName">Last name</label>
-            <input type="text" id="lastName" placeholder="Enter your email address">
+            <input type="text" id="lastName" placeholder="Enter your last name...">
+
+            <!-- Email Address -->
             <label for="email">Email</label>
             <input type="email" id="email" placeholder="Enter your email address" required>
+
+            <!-- Password input -->
             <label for="password">Password</label>
             <input type="password" id="password" placeholder="Enter your password" required>
+
+            <!-- Re-enter Password -->
             <label for="re_password">Re-enter Password</label>
             <input type="password" id="re_password" placeholder="Enter your password again" required>
+
+            <!-- Password error  -->
             <div class="password-error">
-                <p id="password_match_error">Password didn't matched... Please try again...</p>
+                <p id="password_match_error"></p>
             </div>
-            <button id="signBtn" onclick="signUp()"><a href="#">Sign Up</a></button>
+
+            <input type="submit" value="submit" id="button">
+
             <div class="new-user"><p>Already have a account?<a href="login.html"> Login</a></p></div>
         </form>
     </div>

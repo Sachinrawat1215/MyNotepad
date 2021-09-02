@@ -1,3 +1,5 @@
+// author - Sachin Rawat - MyNotepad
+
 // SignUp Details fetch 
 let signUpObj = [];
 let loginObj = [];
@@ -8,43 +10,43 @@ let user = {
     password: ""
 };
 
-const signUp = () => {
-    if (user.first != "" && user.lastName != "" && user.gmail != "" && password.value === re_password.value) {
+function validateForm(){
+    let passwordVal = document.getElementById("password").value;
+    let flag = 1;
+    if(passwordVal.length < 8){
+        password_match_error.style.visibility = "visible";
+        password_match_error.innerText = "Password must contain atleast 8 digit..";
+        flag = 0;
+    }else if(passwordVal != re_password.value){
+        password_match_error.style.visibility = "visible";
+        password_match_error.innerText = "Password didn't matched... Please try again...";
+        flag = 0;
+    }else{
+        password_match_error.style.visibility = "hidden";
+        password_match_error.innerText = "SignUp sucessfull... Login now..."
+        flag = 1;
 
-        // if(user.first != ""){
-        //     user.first = firstName.value;
-        // }else{
-        //     password_match_error.style.visibility = "visible";
-        //     password_match_error.innerText = "Enter first name..."
-        // }
-
-        // if(user.lastName != ""){
-        //     user.first = lastName.value;
-        // }else{
-        //     password_match_error.style.visibility = "visible";
-        //     password_match_error.innerText = "Enter last name..."
-        // }
-
-        // if(user.gmail != ""){
-        //     user.gmail = email.value;
-        // }else{
-        //     password_match_error.style.visibility = "visible";
-        //     password_match_error.innerText = "Enter email address..."
-        // }
         user.first = firstName.value;
         user.lastName = lastName.value;
         user.gmail = email.value;
         user.password = password.value;
-        password_match_error.style.visibility = "visible";
-        password_match_error.innerText = "SignUp sucessfull... Login now..."
         loginObj.push(user);
         console.log(user);
         console.log(loginObj);
-    } else {
-        password_match_error.style.visibility = "visible";
-        password_match_error.innerText = "you have missed something...";
-        console.log(password.value);
-        console.log(re_password.value);
+
+        // user.push({first : firstName.value});
+        // user.push({lastName : lastName.value});
+        // user.push({gmail : email.value});
+        // user.push({password : password.value});
+        // console.log(user);
+        // signUpObj.push(user);
+        // console.log(signUpObj);
+    }   
+
+    if(flag){
+        return true;
+    }else{
+        return false;
     }
 };
 
@@ -90,7 +92,7 @@ function showNotes() {
             html += `<div class="cards">
             <div class="title">Note ${index + 1}</div>
             <div class="cardtxt">         
-                <span id="main-content">${element}${readMore}
+                <span id="main-content"><p>${element}</p>${readMore}
             </div>
             <i class="fas fa-trash-alt"  id="${index}" onclick="deleteNote(this.id)"></i>
             </div>`;

@@ -57,6 +57,11 @@
     .content-box{
         width: 50%;
     }
+
+    .wrapper .text-input p,
+    .wrapper .text-input button{
+        margin: 3px 35px;
+    }
 }
 
 @media(max-width: 1000px){
@@ -99,8 +104,9 @@
         padding: 10px;
     }
 
-    .wrapper .text-input button{
-        margin: 10px 30px;
+    .wrapper .text-input button,
+    .wrapper .text-input p{
+        margin: 3px 30px;
     }
 
     .login-container{
@@ -228,8 +234,9 @@
         padding: 10px;
     }
 
-    .wrapper .text-input button{
-        margin: 10px;
+    .wrapper .text-input button,
+    .wrapper .text-input p{
+        margin: 3px 10px;
     }
 
     .wrapper .user-logout{
@@ -263,8 +270,8 @@
 
     .content-box{
         width: 90%;
-        top: 120px;
-        left: 6%;
+        left: 5%;
+        top: 70px;
     }
 }
 
@@ -280,7 +287,5 @@
 
     .content-box{
         width: 90%;
-        top: 100px;
-        left: 5%;
     }
 }
